@@ -102,7 +102,7 @@ def porcentajes_torta(tupla_cantidades:tuple):
     porcentajes = [porcentaje_consumer, porcentaje_corporate, porcentaje_homeoffice]
     return (titulos,porcentajes)
     
-porcentajes,titulos = porcentajes_torta(cuenta_ventas_segment(leer_archivo()))
+titulos,porcentajes = porcentajes_torta(cuenta_ventas_segment(leer_archivo()))
 fig, ax = plt.subplots()
 ax.pie(porcentajes, titulos = titulos)
 st.pyplot(fig)
