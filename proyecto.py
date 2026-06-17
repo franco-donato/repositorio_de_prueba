@@ -101,9 +101,10 @@ def porcentajes_torta(tupla_cantidades:tuple):
 
     sizes = [porcentaje_consumer, porcentaje_corporate, porcentaje_homeoffice]
 
-    fig, ax = plt.subplots()
-    ax.pie(sizes, labels=labels)
     
+
+fig, ax = plt.subplots()
+ax.pie(sizes, labels=labels)
 st.pyplot(fig)
 
 # Funciones resolucion pregunta 3
