@@ -93,7 +93,7 @@ def porcentajes_torta(tupla_cantidades:tuple):
     '''
     consumer, corporate, homeoffice = tupla_cantidades
 
-    labels = "Consumer ("+str(consumer)" compras)", "Corporate ("+str(corporate)" compras)", "Home Office ("+str(homeoffice)" compras)"
+    labels = "Consumer ("+str(consumer)+" compras)", "Corporate ("+str(corporate)+" compras)", "Home Office ("+str(homeoffice)+" compras)"
     
     porcentaje_consumer = regla_de_3(consumer)
     porcentaje_corporate = regla_de_3(corporate)
