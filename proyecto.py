@@ -103,8 +103,8 @@ def porcentajes_torta(tupla_cantidades:tuple):
 
     fig, ax = plt.subplots()
     ax.pie(sizes, labels=labels)
-    st.pyplot(fig)
-
+    
+st.pyplot(fig)
 
 # Funciones resolucion pregunta 3
 
