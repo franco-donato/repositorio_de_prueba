@@ -93,16 +93,16 @@ def porcentajes_torta(tupla_cantidades:tuple):
     '''
     consumer, corporate, homeoffice = tupla_cantidades
 
-    labels = "Consumer ("+str(consumer)+" compras)", "Corporate ("+str(corporate)+" compras)", "Home Office ("+str(homeoffice)+" compras)"
+    titulos = "Consumer ("+str(consumer)+" compras)", "Corporate ("+str(corporate)+" compras)", "Home Office ("+str(homeoffice)+" compras)"
     
     porcentaje_consumer = regla_de_3(consumer)
     porcentaje_corporate = regla_de_3(corporate)
     porcentaje_homeoffice = regla_de_3(homeoffice)
 
-    sizes = [porcentaje_consumer, porcentaje_corporate, porcentaje_homeoffice]
-
+    porcentajes = [porcentaje_consumer, porcentaje_corporate, porcentaje_homeoffice]
+    return (titulos,porcentajes)
     
-
+porcentajes,titulos = porcentajes_torta(cuenta_ventas_segment(leer_archivo()))
 fig, ax = plt.subplots()
 ax.pie(sizes, labels=labels)
 st.pyplot(fig)
