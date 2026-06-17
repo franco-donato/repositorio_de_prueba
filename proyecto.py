@@ -5,13 +5,7 @@ import matplotlib.pyplot as plt
 st.title ("AGUANTE BOCA")
 st.write ("EL ÚNICO GRANDE: C.A.B.J.")
 
-labels = "Consumer (6496 compras)", "Corporate (1341 compras)", "Home Office (2158 compras)"
-sizes = [65, 22, 13]
 
-fig, ax = plt.subplots()
-ax.pie(sizes, labels=labels)
-
-st.pyplot(fig)
 
 def leer_archivo()->list:
     '''
@@ -60,7 +54,7 @@ def ventas_segment(fila : list, segment : str)->tuple:
 
 def test_ventas_segment():
     assert ventas_segment("Standard Class","Consumer","United States","Fort Lauderdale","Florida","33311","South","Furniture","Tables","957.5775","5","0.45","-383.031,26.121561","-80.128778","") == -1
-    assert ventas_segment("Standard Class","Consumer","United States","Fort Lauderdale","Florida","33311","South","Furniture","Tables","957.5775","5","0.45","-383.031,26.121561","-80.128778","Consumer") == 1)
+    assert ventas_segment("Standard Class","Consumer","United States","Fort Lauderdale","Florida","33311","South","Furniture","Tables","957.5775","5","0.45","-383.031,26.121561","-80.128778","Consumer") == 1
     assert ventas_segment([], "Consumer") == -1
 
 def cuenta_ventas_segment(data_set:list)->tuple:
@@ -87,6 +81,30 @@ def cuenta_ventas_segment(data_set:list)->tuple:
     
     tupla_cantidades = (cantidad_consumer,cantidad_corporate,cantidad_homeoffice)
     return tupla_cantidades
+
+def regla_de_3(numero : int, total_filas : int = 9995)->int:
+    '''
+    '''
+    porcentaje = (numero * 100)/total_filas
+    return porcentaje 
+
+def porcentajes_torta(tupla_cantidades:tuple):
+    '''
+    '''
+    consumer, corporate, homeoffice = tupla_cantidades
+
+    labels = "Consumer ("+str(consumer)" compras)", "Corporate ("+str(corporate)" compras)", "Home Office ("+str(homeoffice)" compras)"
+    
+    porcentaje_consumer = regla_de_3(consumer)
+    porcentaje_corporate = regla_de_3(corporate)
+    porcentaje_homeoffice = regla_de_3(homeoffice)
+
+    sizes = [porcentaje_consumer, porcentaje_corporate, porcentaje_homeoffice]
+
+    fig, ax = plt.subplots()
+    ax.pie(sizes, labels=labels)
+    st.pyplot(fig)
+
 
 # Funciones resolucion pregunta 3
 
