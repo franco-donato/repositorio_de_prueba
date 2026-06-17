@@ -1,9 +1,17 @@
 import streamlit as st
+import matplotlib.pyplot as plt
 
 
 st.title ("AGUANTE BOCA")
 st.write ("EL ÚNICO GRANDE: C.A.B.J.")
 
+labels = "Consumer (6496 compras)", "Corporate (1341 compras)", "Home Office (2158 compras)"
+sizes = [65, 22, 13]
+
+fig, ax = plt.subplots()
+ax.pie(sizes, labels=labels)
+
+st.pyplot(fig)
 
 def leer_archivo()->list:
     '''
@@ -72,10 +80,10 @@ def cuenta_ventas_segment(data_set:list)->tuple:
     for fila in data_set:
         if fila[1] == "Consumer":
             cantidad_consumer = ventas_segment(fila,"Consumer")        
-        elif fila[1] == "Consumer":
-            cantidad_consumer = ventas_segment(fila,"Consumer")
-        elif fila[1] == "Consumer":
-            cantidad_consumer = ventas_segment(fila,"Consumer")
+        elif fila[1] == "Corporate":
+            cantidad_corporate = ventas_segment(fila,"Corporate")
+        elif fila[1] == "Home Office":
+            cantidad_homeoffice = ventas_segment(fila,"Home Office")
     
     tupla_cantidades = (cantidad_consumer,cantidad_corporate,cantidad_homeoffice)
     return tupla_cantidades
