@@ -19,7 +19,7 @@ def leer_archivo()->list:
     data_set = open("SampleSuperstore_geo.csv")
     filas = []
     for linea in data_set:
-        lista.append(linea.strip("\n").split(","))
+        filas.append(linea.strip("\n").split(","))
 
     data_set.close()
     return filas
