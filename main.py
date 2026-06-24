@@ -18,7 +18,7 @@ def main():
 
     # --------------------------------------------------------------
     # PREGUNTA 1:
-    st.title("PAQUETES ENVIADOS Y GANANCIA POR CIUDAD")
+    st.subheader("1. PAQUETES ENVIADOS Y GANANCIA POR CIUDAD")
 
     accion = st.menu_button("Selecciona una ciudad",options=ciudades(archivo_csv))
     
@@ -33,7 +33,7 @@ def main():
 
     # --------------------------------------------------------------
     # PREGUNTA 2
-    st.subheader("2. El Estado que mas paquetes recibió")
+    st.subheader("2. EL ESTADO QUE MAS PAQUETES RECIBIÓ")
     nombre_valor = estado_que_mas_recibio(estados_paquetes(archivo_csv))
     nombre_estado =nombre_valor[0]
     valor_estado = nombre_valor[1]
@@ -72,7 +72,7 @@ def main():
 
     # --------------------------------------------------------------
     # PREGUNTA 5:
-    st.title("SUBCATEGORIA MAS VENDIDA")
+    st.subhead("5. SUBCATEGORIA MAS VENDIDA")
     
     subcategoria = st.radio(
         "Selecciona una categoria:",
@@ -85,7 +85,7 @@ def main():
     # --------------------------------------------------------------
     #PREGUNTA 6:
 
-    st.title("VENTAS POR SEGMENTOS")
+    st.subhead("6. VENTAS POR SEGMENTOS")
     grafico_torta = genera_grafico(archivo_csv)
     st.pyplot(grafico_torta)
 
