@@ -1,4 +1,17 @@
-def ventas_ganancias(ciudad:str,data_base:dict)->tuple:
+def ciudades(dataset):
+
+    ciudades : list[str] = []
+
+    for clave in dataset:
+        fila = dataset[clave]
+        ciudad = fila["City"]
+        if ciudad not in ciudades:
+            ciudades.append(ciudad)
+
+    return ciudades
+
+
+def ventas_ganancias(ciudad:str,database : dict = leer_archivo())->tuple:
     '''
     ciudad: string
     ciudad: representa una ciudad de Estados Unidos
@@ -9,12 +22,14 @@ def ventas_ganancias(ciudad:str,data_base:dict)->tuple:
     Ejemplos;
     test_ventas_ganancias( ):
     test_ventas_ganancias( ):
-    test_ventas_ganabcias( ):
+    test_ventas_ganancias( ):
     '''
     contador_quantity : int = 0
-    ganancias : int = 0
-    for fila in data_base:
-        if ciudad == data_base["City"]:
-            contador_quantity += int(data_base["Quantity"])
-            ganancia += float(data_base["Profit"])
-    return (contador_quantity,ganancias)
+    ganancias : float = 0.0
+    for clave_fila in database:
+        fila : dict = database[clave_fila]
+        if ciudad == fila["City"]:
+            contador_quantity = contador_quantity + int(fila["Quantity"])
+            ganancias += float(fila["Profit"])
+
+    return (contador_quantity,round(ganancias,2))

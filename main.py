@@ -1,6 +1,7 @@
 # Importamos el codigo principal
 
 from leer_archivo import *
+from resolucion_pregunta1 import *
 from resolucion_pregunta3 import *
 from resolucion_pregunta5 import *
 from resolucion_pregunta6 import *
@@ -18,6 +19,20 @@ def main():
 
     '''
     archivo_csv = leer_archivo()
+
+    #pregunta1
+    
+    accion = st.menu_button("Selecciona una ciudad",options=ciudades(archivo_csv))
+    
+    cantidad_de_paquetes,ganancias = ventas_ganancias(accion,archivo_csv)
+
+    tabla = {
+    "Paquetes enviados":[cantidad_de_paquetes],
+    "Ganancia":[ganancias]
+    }
+    st.table(tabla)
+
+
     #pregunta 3
     estado = st.selectbox("Seleccione un estado: ", lista_estados_disponibles(archivo_csv))
 
@@ -36,7 +51,7 @@ def main():
         ["Furniture","Technology","Office Supplies"]
     )
 
-    st.write(mayor_subcategoria(subcategoria,leer_archivo()))
+    st.write(mayor_subcategoria(subcategoria,archivo_csv))
     # RESOLUCION_PREGUNTA6
 
     st.title("VENTAS POR SEGMENTOS")
