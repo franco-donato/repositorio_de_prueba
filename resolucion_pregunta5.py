@@ -35,15 +35,17 @@ def contador_subcategoria_furniture(database:dict)-> int:
     '''
     subcategorias : dict = {"Bookcases":0,"Chairs":0,"Tables":0,"Furnishings":0}
     
-    for fila in database:
+    for clave_fila in database:
+        fila = database[clave_fila]
+
         if fila["Sub-Category"] == "Bookcases":
-            subcategorias["Bookcases"] += fila["Quantity"]
+            subcategorias["Bookcases"] += int(fila["Quantity"])
         elif fila["Sub-Category"] == "Chairs":
-            subcategorias["Chairs"] += fila["Quantity"]
+            subcategorias["Chairs"] += int(fila["Quantity"])
         elif fila["Sub-Category"] == "Tables":
-            subcategorias["Tables"] += fila["Quantity"]
+            subcategorias["Tables"] += int(fila["Quantity"])
         elif fila["Sub-Category"] == "Furnishings":
-            subcategorias["Furnishings"] += fila["Quantity"]
+            subcategorias["Furnishings"] += int(fila["Quantity"])
 
 
     return subcategoria_mas_vendida(subcategorias)
@@ -62,11 +64,13 @@ def contador_subcategoria_technology(database:dict)-> int:
     '''
     subcategorias : dict = {"Phones":0,"Accessories":0}
     
-    for fila in database:
+    for clave_fila in database:
+        fila = database[clave_fila]
+
         if fila["Sub-Category"] == "Phones":
-            subcategorias["Phones"] += fila["Quantity"]
+            subcategorias["Phones"] += int(fila["Quantity"])
         elif fila["Sub-Category"] == "Accessories":
-            subcategorias["Accessories"] += fila["Quantity"]
+            subcategorias["Accessories"] += int(fila["Quantity"])
     
 
     return subcategoria_mas_vendida(subcategorias)
@@ -86,23 +90,24 @@ def contador_subcategoria_officesupplies(database:dict)-> int:
     '''
     subcategorias={"Storage":0,"Art":0,"Labels":0,"Binders":0,"Appliances":0,"Paper":0,"Envelopes":0,"Fasteners":0}
     
-    for fila in database:
+    for clave_fila in database:
+        fila = database[clave_fila]
         if fila["Sub-Category"] == "Storage":
-            subcategorias["Storage"] += fila["Quantity"]
+            subcategorias["Storage"] += int(fila["Quantity"])
         elif fila["Sub-Category"] == "Art":
-            subcategorias["Art"] += fila["Quantity"]
+            subcategorias["Art"] += int(fila["Quantity"])
         elif fila["Sub-Category"] == "Labels":
-            subcategorias["Labels"] += fila["Quantity"]
+            subcategorias["Labels"] += int(fila["Quantity"])
         elif fila["Sub-Category"] == "Binders":
-            subcategorias["Binders"] += fila["Quantity"]
+            subcategorias["Binders"] += int(fila["Quantity"])
         elif fila["Sub-Category"] == "Appliances":
-            subcategorias["Appliances"] += fila["Quantity"]
+            subcategorias["Appliances"] += int(fila["Quantity"])
         elif fila["Sub-Category"] == "Paper":
-            subcategorias["Paper"] += fila["Quantity"]
+            subcategorias["Paper"] += int(fila["Quantity"])
         elif fila["Sub-Category"] == "Envelopes":
-            subcategorias["Envelopes"] += fila["Quantity"]
+            subcategorias["Envelopes"] += int(fila["Quantity"])
         elif fila["Sub-Category"] == "Fasteners":
-            subcategorias["Fasteners"] += fila["Quantity"]
+            subcategorias["Fasteners"] += int(fila["Quantity"])
 
     return subcategoria_mas_vendida(subcategorias)
 
@@ -130,6 +135,6 @@ def mayor_subcategoria(categoria:str,data_base:dict):
         subcategoria : dict = contador_subcategoria_technology(data_base)
 
     for clave in subcategoria:
-        retorno = "La subcategoria mas vendida es "+clave+" y la cantidad de ventas es "+str(subcategoria[clave])
+        retorno = "La subcategoria mas vendida es: "+clave+" y la cantidad de ventas es: "+str(subcategoria[clave])
          
     return retorno

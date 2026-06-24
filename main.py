@@ -29,12 +29,17 @@ def main():
     st.table(contar_envios(archivo_csv,estado))
     
     # RESOLUCION_PREGUNTA5
+    st.title("SUBCATEGORIA MAS VENDIDA")
+    
     subcategoria = st.radio(
         "Selecciona una categoria:",
         ["Furniture","Technology","Office Supplies"]
     )
-    st.write(mayor_subcategoria(subcategoria))
+
+    st.write(mayor_subcategoria(subcategoria,leer_archivo()))
     # RESOLUCION_PREGUNTA6
+
+    st.title("VENTAS POR SEGMENTOS")
     grafico_torta = genera_grafico(archivo_csv)
     st.pyplot(grafico_torta)
 
