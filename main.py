@@ -27,7 +27,8 @@ def main():
 
     st.table(contar_envios(archivo_csv,estado))
     
-    
+    grafico_torta = genera_grafico(archivo_csv)
+    st.pyplot(grafico_torta)
 
     return 0
 
