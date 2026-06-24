@@ -36,7 +36,7 @@ def ganancias_region(dataset):
     '''
     ganancias = {}
     
-    for clave in data_set:
+    for clave in dataset:
 
         fila = dataset[clave]
         region = fila["Region"]
