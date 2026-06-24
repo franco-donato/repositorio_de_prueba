@@ -2,17 +2,20 @@
 import matplotlib.pyplot as plt
 
 
-def cuenta_segments(database):
+def cuenta_segments(database : dict)->dict:
+    '''
+    la función toma un data_set, es decir, un diccionario donde las claves son enteros y los valores son diccionarios
+    que representa a cada fila del data_set, y devuelve un diccionario donde las claves son los segmentos y los valores son
+    la cantidad de ventas que se realizo a cada segmento.
 
-    cantidades = {}
+    '''
+    cantidades : dict = {}
 
     for clave in database:
 
-        fila = database[clave]
-
-        segment = fila["Segment"]
-
-        quantity = int(fila["Quantity"])
+        fila : dict = database[clave]
+        segment : str = fila["Segment"]
+        quantity : int = int(fila["Quantity"])
 
         if segment not in cantidades:
 
@@ -23,19 +26,40 @@ def cuenta_segments(database):
     return cantidades
 
 
-def division_para_porcentaje(numero : int, total : int)-> int:
+def division_para_porcentaje(valor : int, total : int)-> int:
+    '''
+    la funcion toma dos numeros enteros (valor y total) y devuelve el resultado de redondear la division de valor entre total.
+    division_para_porcentaje(12,0) == 0
+    division_para_porcentaje(12,4) == 3
+    division_para_porcentaje(13,4) == 3
+    division_para_porcentaje(7,4) == 2
+    '''
     if total == 0:
-        resultado = 0
+        resultado : int = 0
     else:    
-        resultado = round((numero * 100)/total)
+        resultado : int = round((valor * 100)/total)
         
     return resultado
+    
+# ESTA FUNCIÓN LUEGO IRIA EN EL ARCHIVO  DE TESTING
+def test_division_para_porcentaje():   
+    assert division_para_porcentaje(12,0) == 0
+    assert division_para_porcentaje(12,4) == 3
+    assert division_para_porcentaje(13,4) == 3
+    assert division_para_porcentaje(7,4) == 2
+
+
 
 def calcula_porcentaje(segmentos : dict)->list:
-
+    '''
+    esta funcion recibe un diccionario, donde las claves son strings que representan a los segmentos y los valores
+    son numeros enteros que representan la cantidad de ventas que se realizaron a cada segmento. Y devuelve una lista donde sus elementos son
+    el porcentaje de ventas que se realizaron a cada segmento, este porcentaje se calcula con una regla de 3 simple,
+    donde total es un entero que representa al total de las ventas realizadas (i,e: el 100% de las ventas)
+    '''
     cantidades : list = list(segmentos.values())
 
-    porcentajes : list = []
+    porcentajes : list[int]= []
 
     total : int = 0
     for valor in cantidades:
@@ -48,17 +72,36 @@ def calcula_porcentaje(segmentos : dict)->list:
     return porcentajes
 
 def segment_y_cantidad(segmentos:dict)->list:
-    nombres : list = []
+    '''
+    esta funcion recibe un diccionario, donde las claves son strings que representan a los segmentos y los valores
+    son numeros enteros que representan la cantidad de ventas que se realizaron a cada segmento. y devuelve una lista tal que 
+    los elementos de esta son strings que representan las claves de segmentos y entre parentesis, las ventas realizadas.
+    segment_y_cantidad({})==[]
+    segment_y_cantidad({'Consumer': 19521, 'Corporate': 11608, 'Home Office': 6744})==["Consumer (19521)","Corporate (11608)","HOme Office (6744)"]
+    '''
+    nombres : list[str] = []
     for clave in segmentos:
         titulo = clave+" ("+str(segmentos[clave])+")"
         nombres.append(titulo)
     return nombres
 
+#  ESTA FUNCIÓN LUEGO IRIA EN EL ARCHIVO  DE TESTING
+def test_segment_y_cantidad():
+    assert segment_y_cantidad({})==[]
+    assert segment_y_cantidad({'Consumer': 19521, 'Corporate': 11608, 'Home Office': 6744})==["Consumer (19521)","Corporate (11608)","HOme Office (6744)"]
+    
+
+
 def genera_grafico(database : dict):
-    segments = cuenta_segments(database)
-    nombres = segment_y_cantidad(segments)
-    porcentajes = calcula_porcentaje(segments)
-    colores = ["#2612D8","#0EE92B","#F3FE5C"]
+    '''
+    la función toma un data_set, es decir, un diccionario donde las claves son enteros y los valores son diccionarios
+    que representa a cada fila del data_set, para generar un grafico de barras utilizando las funciones: plt.subplots(), ax.pie() de matplotlib
+    
+    '''
+    segments : dict = cuenta_segments(database)
+    nombres : list[str] = segment_y_cantidad(segments)
+    porcentajes : list[int] = calcula_porcentaje(segments)
+    colores : list[str] = ["#2612D8","#0EE92B","#F3FE5C"]
     fig, ax = plt.subplots()
     ax.pie(porcentajes,labels=nombres,colors = colores)
 

@@ -1,22 +1,29 @@
-def mayor_el_lista(lista:list)->int:
+def subcategoria_mas_vendida(diccionario : dict)->dict:
     '''
-    La función recibe una lista de numeros enteros y retorna el mayor elemento.
-    Diseñamos esta función para que dada una lista, nos devuelva el mayor elemento de la misma.
+    Esta funcion recibe un diccionario donde las claves son strings (que representan a las subcategorias) y los valores son numeros enteros
+    (que representan la cantidad de ventas de cada subcategoria), y devuelve un diccionario donde la clave es la subcategoria mas vendida
+    y el valor es la cantidad de ventas de esta
     Ejemplos:
-    test_mayor_el_lista( ):
-    test_mayor_el_lista( ):
-    test_mayor_el_lista( ):
+    subcategoria_mas_vendida( ):
+    subcategoria_mas_vendida( ):
+    subcategoria_mas_vendida( ):
     '''
-    mayor = 0
-    for elemento in list:
-        if elemento > mayor:
-            mayor = elemento
-    return mayor
+    subcategoria_mas_vendida : dict = {}
+    valor_mayor : int = 0
+    subcategoria : str = ""
+    for subcategoria in diccionario:
+        if diccionario[subcategoria] > valor_mayor:
+            valor_mayor = diccionario[subcategoria]
+            clave = subcategoria
+    
+    subcategoria_mas_vendida[clave] = valor_mayor
+    return subcategoria_mas_vendida
 
 
-def contador_subcategoria_furniture(data_base:dict)-> int:
+def contador_subcategoria_furniture(database:dict)-> int:
     '''
-    La función recibe un database y devuelve la cantidad de ventas de cada una de las subcategorías de la
+    La función recibe un database y devuelve un diccionario donde la subcategoria mas vendida es la clave y 
+    la cantidad de ventas su valor.
     categoría Furniture.
     Esta función se va a usar para saber con exactitud cuantas ventas se realizaron de cada una de las subcategorías
     (bookcases, chairs, tables y furnishings) de la categoría Furniture, para luego conocer cuál fue la que tuvo más
@@ -26,28 +33,25 @@ def contador_subcategoria_furniture(data_base:dict)-> int:
     contador_subcategoria_furniture( ):
     contador_subcategoria_furniture( ):
     '''
-    contador_bookcases : int = 0
-    contador_chairs : int = 0
-    contador_tables : int = 0
-    contador_furnishings : int = 0
-    for fila in data_base:
+    subcategorias : dict = {"Bookcases":0,"Chairs":0,"Tables":0,"Furnishings":0}
+    
+    for fila in database:
         if fila["Sub-Category"] == "Bookcases":
-            contador_bookcases += fila["Quantity"]
+            subcategorias["Bookcases"] += fila["Quantity"]
         elif fila["Sub-Category"] == "Chairs":
-            contador_chairs += fila["Quantity"]
+            subcategorias["Chairs"] += fila["Quantity"]
         elif fila["Sub-Category"] == "Tables":
-            contador_tables += fila["Quantity"]
+            subcategorias["Tables"] += fila["Quantity"]
         elif fila["Sub-Category"] == "Furnishings":
-            contador_furnishings += fila["Quantity"]
-    lista_de_contadores = [contador_bookcases,contador_chairs,contador_tables,contador_furnishings]
+            subcategorias["Furnishings"] += fila["Quantity"]
 
 
-    return mayor_el_lista(lista_de_contadores)
+    return subcategoria_mas_vendida(subcategorias)
 
-def contador_subcategoria_technology(data_base:dict)-> int:
+def contador_subcategoria_technology(database:dict)-> int:
     '''
-    La función recibe un database y devuelve la cantidad de ventas de cada una de las subcategorías de la
-    categoría Technology.
+    La función recibe un database y devuelve un diccionario donde la subcategoria mas vendida es la clave y 
+    la cantidad de ventas su valor.
     Esta función se va a usar para saber con exactitud cuantas ventas se realizaron de cada una de las subcategorías
     (phones y accessories) de la categoría Technology, para luego conocer cuál fue la que tuvo más
     ventas.
@@ -56,23 +60,22 @@ def contador_subcategoria_technology(data_base:dict)-> int:
     contador_subcategoria_technology( ):
     contador_subcategoria_technology( ):
     '''
-    contador_phones : int = 0
-    contador_accessories : int = 0
-    for fila in data_base:
-        if fila["Sub-Category"] == "Phones":
-            contador_phones += fila["Quantity"]
-        elif fila["Sub-Category"] == "Accessories":
-            contador_accessories += fila["Quantity"]
+    subcategorias : dict = {"Phones":0,"Accessories":0}
     
-    lista_de_contadores = [contador_phones,contador_accessories]
+    for fila in database:
+        if fila["Sub-Category"] == "Phones":
+            subcategorias["Phones"] += fila["Quantity"]
+        elif fila["Sub-Category"] == "Accessories":
+            subcategorias["Accessories"] += fila["Quantity"]
+    
 
-    return mayor_el_lista(lista_de_contadores)
+    return subcategoria_mas_vendida(subcategorias)
 
 
-def contador_subcategoria_officesupplies(data_base:dict)-> int:
+def contador_subcategoria_officesupplies(database:dict)-> int:
     '''
-    La función recibe un database y devuelve la cantidad de ventas de cada una de las subcategorías de la
-    categoría Office Supplies.
+    La función recibe un database y devuelve un diccionario donde la subcategoria mas vendida es la clave y 
+    la cantidad de ventas su valor.
     Esta función se va a usar para saber con exactitud cuantas ventas se realizaron de cada una de las subcategorías
     (storage, art, labels, binders, appliances, paper, envelopes y fasteners) de la categoría Office Supplies, para luego 
     conocer cuál fue la que tuvo más ventas.
@@ -81,35 +84,27 @@ def contador_subcategoria_officesupplies(data_base:dict)-> int:
     contador_subcategoria_officesupplies( ):
     contador_subcategoria_officesupplies( ):
     '''
-    contador_storage : int = 0
-    contador_art : int = 0
-    contador_labels : int = 0
-    contador_binders : int = 0
-    contador_appliances : int = 0
-    contador_paper : int = 0
-    contador_envelopes : int = 0
-    contador_fasteners : int = 0
-    for fila in data_base:
+    subcategorias={"Storage":0,"Art":0,"Labels":0,"Binders":0,"Appliances":0,"Paper":0,"Envelopes":0,"Fasteners":0}
+    
+    for fila in database:
         if fila["Sub-Category"] == "Storage":
-            contador_storage += fila["Quantity"]
+            subcategorias["Storage"] += fila["Quantity"]
         elif fila["Sub-Category"] == "Art":
-            contador_art += fila["Quantity"]
+            subcategorias["Art"] += fila["Quantity"]
         elif fila["Sub-Category"] == "Labels":
-            contador_labels += fila["Quantity"]
+            subcategorias["Labels"] += fila["Quantity"]
         elif fila["Sub-Category"] == "Binders":
-            contador_binders += fila["Quantity"]
+            subcategorias["Binders"] += fila["Quantity"]
         elif fila["Sub-Category"] == "Appliances":
-            contador_appliances += fila["Quantity"]
+            subcategorias["Appliances"] += fila["Quantity"]
         elif fila["Sub-Category"] == "Paper":
-            contador_paper += fila["Quantity"]
+            subcategorias["Paper"] += fila["Quantity"]
         elif fila["Sub-Category"] == "Envelopes":
-            contador_envelopes += fila["Quantity"]
+            subcategorias["Envelopes"] += fila["Quantity"]
         elif fila["Sub-Category"] == "Fasteners":
-            contador_fasteners += fila["Quantity"]
+            subcategorias["Fasteners"] += fila["Quantity"]
 
-    lista_de_contadores = [contador_storage,contador_art,contador_labels,contador_binders,contador_appliances,contador_paper,contador_envelopes,contador_fasteners]
-
-    return mayor_el_lista(lista_de_contadores)
+    return subcategoria_mas_vendida(subcategorias)
 
 
 def mayor_subcategoria(categoria:str,data_base:dict):
@@ -126,14 +121,15 @@ def mayor_subcategoria(categoria:str,data_base:dict):
     (falta modificar para que diga que subcategoria es la mas vendida,
     ahora devuelve solo la cantidad)
     '''
-    retorno = 0
+    retorno : str = ""
     if categoria == "Furniture":
-        retorno = contador_subcategoria_furniture(data_base)
-    
+        subcategoria : dict = contador_subcategoria_furniture(data_base)    
     elif categoria == "Office Supplies":
-        retorno = contador_subcategoria_officesupplies(data_base)
-    
+        subcategoria : dict = contador_subcategoria_officesupplies(data_base)
     elif categoria == "Technology":
-        retorno = contador_subcategoria_technology(data_base)
+        subcategoria : dict = contador_subcategoria_technology(data_base)
 
+    for clave in subcategoria:
+        retorno = "La subcategoria mas vendida es "+clave+" y la cantidad de ventas es "+str(subcategoria[clave])
+         
     return retorno

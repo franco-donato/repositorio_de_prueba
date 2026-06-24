@@ -2,6 +2,7 @@
 
 from leer_archivo import *
 from resolucion_pregunta3 import *
+from resolucion_pregunta5 import *
 from resolucion_pregunta6 import *
 import streamlit as st
 
@@ -27,6 +28,13 @@ def main():
 
     st.table(contar_envios(archivo_csv,estado))
     
+    # RESOLUCION_PREGUNTA5
+    subcategoria = st.radio(
+        "Selecciona una categoria:",
+        ["Furniture","Technology","Office Supplies"]
+    )
+    st.write(mayor_subcategoria(subcategoria))
+    # RESOLUCION_PREGUNTA6
     grafico_torta = genera_grafico(archivo_csv)
     st.pyplot(grafico_torta)
 
