@@ -47,13 +47,18 @@ def calcula_porcentaje(segmentos : dict)->list:
     
     return porcentajes
 
-
+def segment_y_cantidad(segmentos:dict)->list:
+    nombres : list = []
+    for clave in segmentos:
+        titulo = clave+" ("+str(segmentos[clave])+")"
+        nombres.append(titulo)
+    return nombres
 
 def genera_grafico(database : dict):
     segments = cuenta_segments(database)
-    nombres = segments.keys()
+    nombres = segment_y_cantidad(segments)
     porcentajes = calcula_porcentaje(segments)
-    colores = ["#4D05C9","#01A917","#F3FE5C"]
+    colores = ["#2612D8","#0EE92B","#F3FE5C"]
     fig, ax = plt.subplots()
     ax.pie(porcentajes,labels=nombres,colors = colores)
 
