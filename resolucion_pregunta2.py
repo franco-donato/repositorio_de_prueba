@@ -1,17 +1,19 @@
-# resolucion_pregunta2.py 
-def paquetes_por_estado(estado : str,diccionario : dict)->int:
-    '''
-    Estado: Es un string y representa un Estado de Estados Unidos.
-    La función recibe un Estado (string) y un diccionario y devuelve los tres Estados que hayan recibido más paquetes
-    y la cantidad de los mismos (un número entero).
-    Hicimos esta función para determinar cuáles, de entre los 50 Estados de USA, fueron los tres que más paquetes
-    recibieron y cuántos fueron.
-    Ejemplos:
-    test_paquetes_por_estado( ):
-    test_paquetes_por_estado( ):
-    test_paquetes_por_estado( ):
-    '''
-    contador_estado : int = 0
-    contador_estado += int(diccionario["Quantity"])
+def estados_paquetes(database):
+    cantidades = {}
+    for clave in database:
+        fila = database[clave]
+        state = fila["State"]
+        quantity = int(fila["Quantity"])
+        if state not in cantidades:
+            cantidades[state] = quantity
+        else: cantidades[state] += quantity
+    return cantidades
 
-    return contador_estado
+def estado_que_mas_recibio(cantidades_estados):
+    estado = ""
+    valor = 0
+    for clave in cantidades_estados:
+        if cantidades_estados[clave] > valor:
+            valor = cantidades_estados[clave]
+            estado = clave
+    return [estado, valor]

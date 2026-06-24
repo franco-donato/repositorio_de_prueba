@@ -1,6 +1,5 @@
-## leer_archivo.py
+# leer_archivo
 import csv
-import streamlit as st
 
 def crear_diccionario_interno(fila):
 
@@ -18,6 +17,7 @@ def crear_diccionario_interno(fila):
     return diccionaro_interno
 
         
+
 
 def leer_archivo():
     data_set = open("SampleSuperstore_geo.csv")

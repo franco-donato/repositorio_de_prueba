@@ -33,3 +33,4 @@ def ventas_ganancias(ciudad:str,database : dict)->tuple:
             ganancias += float(fila["Profit"])
 
     return (contador_quantity,round(ganancias,2))
+

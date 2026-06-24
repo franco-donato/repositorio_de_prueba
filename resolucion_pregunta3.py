@@ -1,4 +1,3 @@
-#resolucion_pregunta3.py
 def contar_envios(database, estado):
     '''
     Estado: es un string que representa un Estado de USA.

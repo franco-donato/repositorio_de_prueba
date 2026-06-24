@@ -1,4 +1,3 @@
-#resolucion_pregunta6.py
 import matplotlib.pyplot as plt
 
 
@@ -41,13 +40,6 @@ def division_para_porcentaje(valor : int, total : int)-> int:
         
     return resultado
     
-# ESTA FUNCIÓN LUEGO IRIA EN EL ARCHIVO  DE TESTING
-def test_division_para_porcentaje():   
-    assert division_para_porcentaje(12,0) == 0
-    assert division_para_porcentaje(12,4) == 3
-    assert division_para_porcentaje(13,4) == 3
-    assert division_para_porcentaje(7,4) == 2
-
 
 
 def calcula_porcentaje(segmentos : dict)->list:
@@ -85,11 +77,6 @@ def segment_y_cantidad(segmentos:dict)->list:
         nombres.append(titulo)
     return nombres
 
-#  ESTA FUNCIÓN LUEGO IRIA EN EL ARCHIVO  DE TESTING
-def test_segment_y_cantidad():
-    assert segment_y_cantidad({})==[]
-    assert segment_y_cantidad({'Consumer': 19521, 'Corporate': 11608, 'Home Office': 6744})==["Consumer (19521)","Corporate (11608)","HOme Office (6744)"]
-    
 
 
 def genera_grafico(database : dict):
