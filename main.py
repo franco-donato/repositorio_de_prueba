@@ -1,0 +1,36 @@
+# Importamos el codigo principal
+
+from leer_archivo import *
+from resolucion_pregunta3 import *
+from resolucion_pregunta6 import *
+import streamlit as st
+
+
+
+
+def main():
+    '''
+    Estamos teniendo complicaciones en cuanto a usar streamlit, tanto para el grafico de torta, como
+    para el mapa. Intentamos buscar en la documentacion, pero no encontramos solucion. Sin embargo, 
+    las funciones deberian funcionar correctamente, lo que nos faltaria es controlar la salida y 
+    entrada de datos por el main, y la elaboracion de la pagina.
+
+    '''
+    archivo_csv = leer_archivo()
+    #pregunta 3
+    estado = st.selectbox("Seleccione un estado: ", lista_estados_disponibles(archivo_csv))
+
+    mostrar_estado = lat_lon_estado(archivo_csv, estado)
+    mostrar_estado["color"] = ["#FFA500"]
+
+    st.map(mostrar_estado, latitude = "lat", longitude = "lon", color = "color")
+
+    st.table(contar_envios(archivo_csv,estado))
+    
+    
+
+    return 0
+
+
+if __name__ == '__main__':
+    main()
