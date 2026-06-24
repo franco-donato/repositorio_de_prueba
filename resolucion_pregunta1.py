@@ -11,7 +11,7 @@ def ciudades(dataset):
     return ciudades
 
 
-def ventas_ganancias(ciudad:str,database : dict = leer_archivo())->tuple:
+def ventas_ganancias(ciudad:str,database : dict)->tuple:
     '''
     ciudad: string
     ciudad: representa una ciudad de Estados Unidos
