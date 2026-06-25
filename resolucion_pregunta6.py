@@ -1,6 +1,6 @@
 # Importamos las funciones necesarias de matplotlib para poder hacer el grafico torta:
 import matplotlib.pyplot as plt
-
+from funciones_auxiliares import * 
 
 def cuenta_segments(database : list[dict])->dict:
     '''
