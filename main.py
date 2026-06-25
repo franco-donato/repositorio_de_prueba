@@ -28,6 +28,8 @@ def main():
 
     accion = st.menu_button("Selecciona una ciudad",options=ciudades(archivo_csv))
     
+    st.markdown("Ciudad: "+str(accion))
+
     cantidad_de_paquetes,ganancias = ventas_ganancias(accion,archivo_csv)
 
     tabla = {
