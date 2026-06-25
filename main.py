@@ -72,7 +72,7 @@ def main():
 
     # --------------------------------------------------------------
     # PREGUNTA 5:
-    st.subhead("5. SUBCATEGORIA MAS VENDIDA")
+    st.subheader("5. SUBCATEGORIA MAS VENDIDA")
     
     subcategoria = st.radio(
         "Selecciona una categoria:",
@@ -85,7 +85,7 @@ def main():
     # --------------------------------------------------------------
     #PREGUNTA 6:
 
-    st.subhead("6. VENTAS POR SEGMENTOS")
+    st.subheader("6. VENTAS POR SEGMENTOS")
     grafico_torta = genera_grafico(archivo_csv)
     st.pyplot(grafico_torta)
 
