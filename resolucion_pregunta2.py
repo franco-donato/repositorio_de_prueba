@@ -1,12 +1,11 @@
-def estados_paquetes(database : dict)->dict:
+def estados_paquetes(database : list[dict])->dict:
     '''
     Esta funcion recibe un database, y devuelve un diccionario, donde la clave es un string (que representa a los estados) y
     el valor es la cantidad de paquetes que recibió cada estado.
     estados_paquetes({}) == {}
     '''
     cantidades : dict = {}
-    for clave in database:
-        fila : dict = database[clave]
+    for fila in database:
         state : str = fila["State"]
         quantity : int = int(fila["Quantity"])
         if state not in cantidades:

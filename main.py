@@ -16,8 +16,10 @@ def main():
     '''
 
     '''
-    archivo_csv = leer_archivo()
+    data_set = open("SampleSuperstore_geo.csv")
+    archivo_csv = leer_archivo(data_set)
 
+    data_set.close()
 
     # --------------------------------------------------------------
     st.title("Proyecto Superstore Norteamericana- Grupo 9")

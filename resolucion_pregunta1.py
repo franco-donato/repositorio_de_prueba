@@ -1,16 +1,15 @@
 
-def ciudades(dataset : dict)->list[str]:
+def ciudades(dataset : list[dict])->list[str]:
     '''
-    Esta funcion recibe un dataset, representado como un diccionario donde las claves son enteros y los valores son diccionarios
+    Esta funcion recibe un dataset, representado como una lista de diccionarios
     que representan a cada fila del dataset, y devuelve una lista de strings que representa a todas las ciudades que hay en el dataset
     Ejemplos;
-    ciudades({}) == []
+    ciudades([]) == []
     ciudades() ==
     '''
     ciudades : list[str] = []
 
-    for clave in dataset:
-        fila = dataset[clave]
+    for fila in dataset:
         ciudad = fila["City"]
         if ciudad not in ciudades:
             ciudades.append(ciudad)
@@ -18,7 +17,7 @@ def ciudades(dataset : dict)->list[str]:
     return ciudades
 
 
-def ventas_ganancias(ciudad:str,database : dict)->tuple:
+def ventas_ganancias(ciudad:str,database : list[dict])->tuple:
     '''
     ciudad: string
     ciudad: representa una ciudad de Estados Unidos
@@ -33,8 +32,7 @@ def ventas_ganancias(ciudad:str,database : dict)->tuple:
     '''
     contador_quantity : int = 0
     ganancias : float = 0.0
-    for clave_fila in database:
-        fila : dict = database[clave_fila]
+    for fila in database:
         if ciudad == fila["City"]:
             contador_quantity = contador_quantity + int(fila["Quantity"])
             ganancias += float(fila["Profit"])

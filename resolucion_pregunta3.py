@@ -1,4 +1,4 @@
-def contar_envios(database : dict, estado : str)->dict:
+def contar_envios(database : list[dict], estado : str)->dict:
     '''
     Estado: es un string que representa un Estado de USA.
     La función recibe un database y un Estado y devuelve las cantidades de cada tipo de envío que se hayan
@@ -14,11 +14,10 @@ def contar_envios(database : dict, estado : str)->dict:
     cantidades : dict = {'Standard Class': 0, 'First Class': 0, 'Second Class': 0, 'Same Day': 0}
 
     
-    for clave in database:
+    for fila in database:
 
-        valores : dict = database[clave]
-        ship_mode : str = valores["Ship Mode"]
-        state : str = valores["State"]
+        ship_mode : str = fila["Ship Mode"]
+        state : str = fila["State"]
 
         if estado == state:
             cantidades[ship_mode] +=1
@@ -26,7 +25,7 @@ def contar_envios(database : dict, estado : str)->dict:
         
     return cantidades
 
-def lista_estados_disponibles(database : dict)->list[str]:
+def lista_estados_disponibles(database : list[dict])->list[str]:
     '''
     La función recibe un database y devuelve que Estados están en el archivo.
     La función fue diseñada para obtener los Estados nombrados en la tabla de la 
@@ -37,14 +36,13 @@ def lista_estados_disponibles(database : dict)->list[str]:
     test_lista_estados_disponibles( ):
     '''
     estados_disponibles : list[str] = []
-    for clave in database:
-        fila : dict = database[clave]
+    for fila in database:
         state : str = fila["State"]
         if state not in estados_disponibles:
             estados_disponibles.append(state)
     return estados_disponibles
 
-def lat_lon_estado(database : dict,estado : str)->dict:
+def lat_lon_estado(database : list[dict],estado : str)->dict:
     '''
     La función recibe un database y un Estado y devuelve las coordenadas de el mismo.
     Diseñamos esta función para saber las latitudes y longitudes de cada Estado
@@ -54,8 +52,7 @@ def lat_lon_estado(database : dict,estado : str)->dict:
     test_lat_lon_estado( ):
     '''
     coordenadas : dict = {}
-    for clave in database:
-        fila : dict = database[clave]
+    for fila in database:
         state : str = fila["State"]
         
         if state == estado:

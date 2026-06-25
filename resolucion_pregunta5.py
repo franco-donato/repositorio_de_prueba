@@ -20,7 +20,7 @@ def subcategoria_mas_vendida(diccionario : dict)->dict:
     return subcategoria_mas_vendida
 
 
-def contador_subcategoria_furniture(database:dict)-> int:
+def contador_subcategoria_furniture(database:list[dict])-> int:
     '''
     La función recibe un database y devuelve un diccionario donde la clave es la subcategoria mas vendida de la categoria furniture y 
     la cantidad de ventas su valor.
@@ -34,8 +34,7 @@ def contador_subcategoria_furniture(database:dict)-> int:
     '''
     subcategorias : dict = {"Bookcases":0,"Chairs":0,"Tables":0,"Furnishings":0}
     
-    for clave_fila in database:
-        fila = database[clave_fila]
+    for fila in database:
 
         if fila["Sub-Category"] == "Bookcases":
             subcategorias["Bookcases"] += int(fila["Quantity"])
@@ -49,7 +48,7 @@ def contador_subcategoria_furniture(database:dict)-> int:
 
     return subcategoria_mas_vendida(subcategorias)
 
-def contador_subcategoria_technology(database:dict)-> int:
+def contador_subcategoria_technology(database:list[dict])-> int:
     '''
     La función recibe un database y devuelve un diccionario donde la clave es la subcategoria mas vendida de la categoria technology y 
     la cantidad de ventas su valor.
@@ -63,8 +62,8 @@ def contador_subcategoria_technology(database:dict)-> int:
     '''
     subcategorias : dict = {"Phones":0,"Accessories":0}
     
-    for clave_fila in database:
-        fila = database[clave_fila]
+    for fila in database:
+
 
         if fila["Sub-Category"] == "Phones":
             subcategorias["Phones"] += int(fila["Quantity"])
@@ -75,7 +74,7 @@ def contador_subcategoria_technology(database:dict)-> int:
     return subcategoria_mas_vendida(subcategorias)
 
 
-def contador_subcategoria_officesupplies(database:dict)-> int:
+def contador_subcategoria_officesupplies(database:list[dict])-> int:
     '''
     La función recibe un database y devuelve un diccionario donde la clave es la subcategoria mas vendida de la categoria Office Supplies y 
     la cantidad de ventas su valor.
@@ -89,8 +88,8 @@ def contador_subcategoria_officesupplies(database:dict)-> int:
     '''
     subcategorias={"Storage":0,"Art":0,"Labels":0,"Binders":0,"Appliances":0,"Paper":0,"Envelopes":0,"Fasteners":0}
     
-    for clave_fila in database:
-        fila = database[clave_fila]
+    for fila in database:
+
         if fila["Sub-Category"] == "Storage":
             subcategorias["Storage"] += int(fila["Quantity"])
         elif fila["Sub-Category"] == "Art":
@@ -111,7 +110,7 @@ def contador_subcategoria_officesupplies(database:dict)-> int:
     return subcategoria_mas_vendida(subcategorias)
 
 
-def mayor_subcategoria(categoria:str,data_base:dict)-> str:
+def mayor_subcategoria(categoria:str,data_base:list[dict])-> str:
     '''
     La función recibe una categoría y un database y un string en el que se especifica la subcategoria mas vendida, y la cantidad
     de ventas de esta.
