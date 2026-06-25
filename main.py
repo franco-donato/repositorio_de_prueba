@@ -1,3 +1,4 @@
+#Importamos el codigo principal
 from leer_archivo import *
 
 from resolucion_pregunta1 import *
@@ -9,6 +10,8 @@ from resolucion_pregunta6 import *
 import streamlit as st
 
 
+
+
 def main():
     '''
 
@@ -17,6 +20,7 @@ def main():
 
 
     # --------------------------------------------------------------
+    st.title("Proyecto Superstore Norteamericana- Grupo 9")
     # PREGUNTA 1:
     st.subheader("1. PAQUETES ENVIADOS Y GANANCIA POR CIUDAD")
 
@@ -33,7 +37,7 @@ def main():
 
     # --------------------------------------------------------------
     # PREGUNTA 2
-    st.subheader("2. EL ESTADO QUE MAS PAQUETES RECIBIÓ")
+    st.subheader("2. El Estado que mas paquetes recibió")
     nombre_valor = estado_que_mas_recibio(estados_paquetes(archivo_csv))
     nombre_estado =nombre_valor[0]
     valor_estado = nombre_valor[1]

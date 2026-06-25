@@ -1,3 +1,4 @@
+# Importamos las funciones necesarias de matplotlib para poder hacer el grafico torta:
 import matplotlib.pyplot as plt
 
 
@@ -6,7 +7,7 @@ def cuenta_segments(database : dict)->dict:
     la función toma un data_set, es decir, un diccionario donde las claves son enteros y los valores son diccionarios
     que representa a cada fila del data_set, y devuelve un diccionario donde las claves son los segmentos y los valores son
     la cantidad de ventas que se realizo a cada segmento.
-
+    cuenta_segments({}) == {}
     '''
     cantidades : dict = {}
 
@@ -48,10 +49,12 @@ def calcula_porcentaje(segmentos : dict)->list:
     son numeros enteros que representan la cantidad de ventas que se realizaron a cada segmento. Y devuelve una lista donde sus elementos son
     el porcentaje de ventas que se realizaron a cada segmento, este porcentaje se calcula con una regla de 3 simple,
     donde total es un entero que representa al total de las ventas realizadas (i,e: el 100% de las ventas)
+    calcula_porcentaje({"Consumer":3,"Corporate":6,"Home Office":1}) == [30,60,10]
+    calcula_porcentaje({}) == []
     '''
     cantidades : list = list(segmentos.values())
 
-    porcentajes : list[int]= []
+    porcentajes : list[int] = []
 
     total : int = 0
     for valor in cantidades:

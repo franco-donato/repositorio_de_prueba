@@ -1,4 +1,3 @@
-# leer_archivo
 import csv
 
 def crear_diccionario_interno(fila):
@@ -34,3 +33,4 @@ def leer_archivo():
         
     data_set.close()
     return filas
+

@@ -22,9 +22,8 @@ def subcategoria_mas_vendida(diccionario : dict)->dict:
 
 def contador_subcategoria_furniture(database:dict)-> int:
     '''
-    La función recibe un database y devuelve un diccionario donde la subcategoria mas vendida es la clave y 
+    La función recibe un database y devuelve un diccionario donde la clave es la subcategoria mas vendida de la categoria furniture y 
     la cantidad de ventas su valor.
-    categoría Furniture.
     Esta función se va a usar para saber con exactitud cuantas ventas se realizaron de cada una de las subcategorías
     (bookcases, chairs, tables y furnishings) de la categoría Furniture, para luego conocer cuál fue la que tuvo más
     ventas.
@@ -52,7 +51,7 @@ def contador_subcategoria_furniture(database:dict)-> int:
 
 def contador_subcategoria_technology(database:dict)-> int:
     '''
-    La función recibe un database y devuelve un diccionario donde la subcategoria mas vendida es la clave y 
+    La función recibe un database y devuelve un diccionario donde la clave es la subcategoria mas vendida de la categoria technology y 
     la cantidad de ventas su valor.
     Esta función se va a usar para saber con exactitud cuantas ventas se realizaron de cada una de las subcategorías
     (phones y accessories) de la categoría Technology, para luego conocer cuál fue la que tuvo más
@@ -78,7 +77,7 @@ def contador_subcategoria_technology(database:dict)-> int:
 
 def contador_subcategoria_officesupplies(database:dict)-> int:
     '''
-    La función recibe un database y devuelve un diccionario donde la subcategoria mas vendida es la clave y 
+    La función recibe un database y devuelve un diccionario donde la clave es la subcategoria mas vendida de la categoria Office Supplies y 
     la cantidad de ventas su valor.
     Esta función se va a usar para saber con exactitud cuantas ventas se realizaron de cada una de las subcategorías
     (storage, art, labels, binders, appliances, paper, envelopes y fasteners) de la categoría Office Supplies, para luego 
@@ -112,19 +111,16 @@ def contador_subcategoria_officesupplies(database:dict)-> int:
     return subcategoria_mas_vendida(subcategorias)
 
 
-def mayor_subcategoria(categoria:str,data_base:dict):
+def mayor_subcategoria(categoria:str,data_base:dict)-> str:
     '''
-    La función recibe una categoría y un database y devuelve la cantidad de ventas de la subcategoría más vendida
-    de una categoría específica (un número entero) y también devuelve el nombre de la misma (string).
+    La función recibe una categoría y un database y un string en el que se especifica la subcategoria mas vendida, y la cantidad
+    de ventas de esta.
     Esta función fue hecha para que, dado un diccionario, devuelva cuantas ventas hubo de, y cuál es, la 
     subcategoría más vendida de una categoría elegida.
     Ejemplos:
     test_mayor_subcategoria( ):
     test_mayor_subcategoria( ):
     test_mayor_subcategoria( ):
-
-    (falta modificar para que diga que subcategoria es la mas vendida,
-    ahora devuelve solo la cantidad)
     '''
     retorno : str = ""
     if categoria == "Furniture":

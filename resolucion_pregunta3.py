@@ -1,4 +1,4 @@
-def contar_envios(database, estado):
+def contar_envios(database : dict, estado : str)->dict:
     '''
     Estado: es un string que representa un Estado de USA.
     La función recibe un database y un Estado y devuelve las cantidades de cada tipo de envío que se hayan
@@ -11,14 +11,14 @@ def contar_envios(database, estado):
     test_contar_envios( ):
     test_contar_envios( ):
     '''
-    cantidades = {'Standard Class': 0, 'First Class': 0, 'Second Class': 0, 'Same Day': 0}
+    cantidades : dict = {'Standard Class': 0, 'First Class': 0, 'Second Class': 0, 'Same Day': 0}
 
     
     for clave in database:
 
-        valores = database[clave]
-        ship_mode = valores["Ship Mode"]
-        state = valores["State"]
+        valores : dict = database[clave]
+        ship_mode : str = valores["Ship Mode"]
+        state : str = valores["State"]
 
         if estado == state:
             cantidades[ship_mode] +=1
@@ -26,7 +26,7 @@ def contar_envios(database, estado):
         
     return cantidades
 
-def lista_estados_disponibles(database):
+def lista_estados_disponibles(database : dict)->list[str]:
     '''
     La función recibe un database y devuelve que Estados están en el archivo.
     La función fue diseñada para obtener los Estados nombrados en la tabla de la 
@@ -36,15 +36,15 @@ def lista_estados_disponibles(database):
     test_lista_estados_disponibles( ):
     test_lista_estados_disponibles( ):
     '''
-    estados_disponibles= []
+    estados_disponibles : list[str] = []
     for clave in database:
-        fila = database[clave]
-        state = fila["State"]
+        fila : dict = database[clave]
+        state : str = fila["State"]
         if state not in estados_disponibles:
             estados_disponibles.append(state)
     return estados_disponibles
 
-def lat_lon_estado(database,estado):
+def lat_lon_estado(database : dict,estado : str)->dict:
     '''
     La función recibe un database y un Estado y devuelve las coordenadas de el mismo.
     Diseñamos esta función para saber las latitudes y longitudes de cada Estado
@@ -53,17 +53,18 @@ def lat_lon_estado(database,estado):
     test_lat_lon_estado( ):
     test_lat_lon_estado( ):
     '''
-    coordenadas ={}
+    coordenadas : dict = {}
     for clave in database:
-        fila = database[clave]
-        state = fila["State"]
+        fila : dict = database[clave]
+        state : str = fila["State"]
         
         if state == estado:
-            longitud = float(fila["Longitude"])
-            latitud = float(fila["Latitude"])
+            longitud : float = float(fila["Longitude"])
+            latitud : float = float(fila["Latitude"])
             
             coordenadas["lat"] = [latitud]
             coordenadas["lon"] = [longitud]
             break
 
     return coordenadas
+
