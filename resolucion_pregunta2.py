@@ -1,16 +1,12 @@
+from funciones_auxiliares import *
+
 def estados_paquetes(database : list[dict])->dict:
     '''
     Esta funcion recibe un database, y devuelve un diccionario, donde la clave es un string (que representa a los estados) y
     el valor es la cantidad de paquetes que recibió cada estado.
     estados_paquetes({}) == {}
     '''
-    cantidades : dict = {}
-    for fila in database:
-        state : str = fila["State"]
-        quantity : int = int(fila["Quantity"])
-        if state not in cantidades:
-            cantidades[state] = quantity
-        else: cantidades[state] += quantity
+    cantidades : dict = cuenta_cantidades_enteras(database, "State","Quantity")
     return cantidades
 
 def estado_que_mas_recibio(cantidades_estados : dict)->list:

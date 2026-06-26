@@ -1,5 +1,7 @@
 #¿Cuales fueron las ganancias de cada región y cuál fue la ciudad que realizó más compras?
 
+from funciones_auxiliares import *
+
 def diccionario_ciudad(dataset : list[dict])->dict:
     '''
     Esta funcion recibe un dataset, y devuelve un diccionario, donde las claves son strings (que representan a las ciudades) y
@@ -7,15 +9,8 @@ def diccionario_ciudad(dataset : list[dict])->dict:
 
     '''
     
-    ciudades : dict = {}
-    
-    for fila in dataset:
-        ciudad : str = fila["City"]
-        sales : float = float(fila["Sales"])
+    ciudades : dict = cuenta_cantidades_float(dataset,"City","Sales")
 
-        if ciudad not in ciudades:
-            ciudades[ciudad] = sales
-        else: ciudades[ciudad] += sales
     return ciudades
 
 def mayor_sales(diccionario : list[dict])->tuple:
@@ -39,17 +34,6 @@ def ganancias_region(dataset: list[dict])-> dict:
     los valores son float (que representan a las ganancias de cada region).
     
     '''
-    ganancias : dict = {}
-    
-    for fila in dataset:
-
-        region : str = fila["Region"]
-        ganancia : float = float(fila["Profit"])
-
-        if region not in ganancias:
-
-            ganancias[region] = ganancia
-
-        else: ganancias[region] += ganancia
+    ganancias : dict = cuenta_cantidades_float(dataset,"Region","Profit")
 
     return ganancias

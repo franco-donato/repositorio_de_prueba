@@ -36,3 +36,20 @@ def cuenta_cantidades_float(database : list[dict],clave1 : str, clave2 : str)->d
             
     return cantidades
 
+def cuenta_cantidades_subcategorias(database : list[dict],categoria : str, clave1 : str, clave2 : str) -> dict:
+    
+    cantidades : dict = {}
+
+    for fila in database:
+
+        if categoria == fila["Category"]:
+            
+            palabra : str = fila[clave1]
+            cantidad : int = int(fila[clave2])
+
+            if palabra not in cantidades:
+                cantidades[palabra] = cantidad
+            else:
+                cantidades[palabra] += cantidad
+
+    return cantidades

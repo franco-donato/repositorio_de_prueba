@@ -9,18 +9,7 @@ def cuenta_segments(database : list[dict])->dict:
     la cantidad de ventas que se realizo a cada segmento.
     cuenta_segments({}) == {}
     '''
-    cantidades : dict = {}
-
-    for fila in database:
-
-        segment : str = fila["Segment"]
-        quantity : int = int(fila["Quantity"])
-
-        if segment not in cantidades:
-
-            cantidades[segment] = quantity
-
-        else: cantidades[segment] += quantity
+    cantidades : dict = cuenta_cantidades_enteras(database,"Segment","Quantity")
 
     return cantidades
 
