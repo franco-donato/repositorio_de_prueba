@@ -1,17 +1,38 @@
-def funcion_auxiliar(database : list[dict],clave1 : str, clave2 : str)->dict:
+def cuenta_cantidades_enteras(database : list[dict],clave1 : str, clave2 : str)->dict:
     '''
-    Esta funcion recibe un database, y devuelve un diccionario, donde la clave es un string (que representa a los estados) y
-    el valor es la cantidad de paquetes que recibió cada estado.
+    Esta funcion recibe un database, y devuelve un diccionario, donde la clave es un string (que representa a la clave1) y
+    el valor es la cantidad de clave2 que le corresponde a la clave1
     estados_paquetes({}) == {}
     '''
-    cantidades : dict = {}
-    for fila in database:
+    cantidades = {}
 
+    for fila in database:
         palabra : str = fila[clave1]
-        cantidad = fila[clave2]
+        cantidad : int = int(fila[clave2])
 
         if palabra not in cantidades:
             cantidades[palabra] = cantidad
-        else: cantidades[palabra] += cantidad
-
+        else:
+            cantidades[palabra] += cantidad
+            
     return cantidades
+
+def cuenta_cantidades_float(database : list[dict],clave1 : str, clave2 : str)->dict:
+    '''
+    Esta funcion recibe un database, y devuelve un diccionario, donde la clave es un string (que representa a la clave1) y
+    el valor es la cantidad de clave2 que le corresponde a la clave1
+    estados_paquetes({}) == {}
+    '''
+    cantidades = {}
+
+    for fila in database:
+        palabra : str = fila[clave1]
+        cantidad : float = float(fila[clave2])
+
+        if palabra not in cantidades:
+            cantidades[palabra] = cantidad
+        else:
+            cantidades[palabra] += cantidad
+            
+    return cantidades
+
